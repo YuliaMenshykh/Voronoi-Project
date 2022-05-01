@@ -1,0 +1,7 @@
+C:\Voronoi Project\Voronoi Project\bin\Debug\Voronoi Project.exe.config
+C:\Voronoi Project\Voronoi Project\bin\Debug\Voronoi Project.exe
+C:\Voronoi Project\Voronoi Project\bin\Debug\Voronoi Project.pdb
+C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.csproj.AssemblyReference.cache
+C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.csproj.CoreCompileInputs.cache
+C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.exe
+C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.pdb
