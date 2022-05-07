@@ -7,29 +7,26 @@ using System.Drawing;
 
 namespace Voronoi_Project
 {
-    class RandPoint
+    class RandPoints
     {
         //Planing image size = 1280 x 720
         //Test image size = 256 x 256
 
-        const int imageSizeX = 256;
-        const int imageSizeY = 256;
+        const int imageSizeX = 1024;
+        const int imageSizeY = 1024;
 
-        static Random randomX = new Random();
-        int MyX = randomX.Next(0, imageSizeX - 1);
+        static Random random = new Random();
 
-        static Random randomY = new Random();
-        int MyY = randomY.Next(0, imageSizeY - 1);
-
-        static Random randomPointCount = new Random();
-        int Count = randomPointCount.Next(3, 5);
+        static int RandCount = random.Next(60,80);
+    
 
         public Point[] GetRandPoints()
         {
-
-            Point[] NewPoint = new Point[Count];
-            for (int i = 0; i < Count; i++)
+            Point[] NewPoint = new Point[RandCount];
+            for (int i = 0; i < RandCount; i++)
             {
+                int MyX = random.Next(0, imageSizeX - 1);
+                int MyY = random.Next(0, imageSizeY - 1);
                 NewPoint[i] = new Point(MyX, MyY);
                 Console.WriteLine(NewPoint[i]);
                 
@@ -40,26 +37,23 @@ namespace Voronoi_Project
 
 
 
-        static Color[] colorArray = { Color.Azure, Color.Beige, Color.Blue,Color.Gray,Color.FloralWhite };
+       
         public Color[] GetRandomColor()
         {
-            var random = new Random();
-            Color[] NewArray = new Color[Count];
+            Color[] colorArray = { Color.Azure, Color.Beige, Color.DarkKhaki, Color.Gray, Color.FloralWhite,
+                Color.Bisque, Color.Cornsilk, Color.FromArgb(255, 125, 50, 70), Color.FromArgb(255, 93, 138, 168),
+                Color.FromArgb(255, 255, 191, 0), Color.FromArgb(255, 153, 102, 204), Color.FromArgb(255, 205, 149, 117), 
+                Color.FromArgb(255,162,162,208) ,Color.FromArgb(255,204,85,0), Color.FromArgb(255,95,158,160) };
+            Color[] NewArray = new Color[RandCount];
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < RandCount; i++)
             {
                 NewArray[i] = colorArray[random.Next(colorArray.Length)];
                 Console.WriteLine(NewArray[i]);
-                // зробити сет піксель тут і додати сюди ж колір
 
             }
             return NewArray;
         }
-
-
-
-       
-
 
 
 
