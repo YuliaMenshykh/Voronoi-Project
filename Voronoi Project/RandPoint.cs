@@ -9,11 +9,18 @@ namespace Voronoi_Project
 {
     class RandPoints
     {
-        //Planing image size = 1280 x 720
-        //Test image size = 256 x 256
+        private int imageSizeX;
+        private int imageSizeY;
+        public RandPoints()
+        {
 
-        const int imageSizeX = 1024;
-        const int imageSizeY = 1024;
+        }
+        public RandPoints(int _imageSizeX, int _imageSizeY)
+        {
+            imageSizeX = _imageSizeX;
+            imageSizeY = _imageSizeY;
+        }
+
 
         static Random random = new Random();
 

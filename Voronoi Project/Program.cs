@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using System.IO;
+using System.Drawing.Imaging;
+
 
 namespace Voronoi_Project
 {
@@ -26,16 +27,16 @@ namespace Voronoi_Project
 
 
 
-            string FileDBName = "myVoron.jpg";
-            string fileFolder = Path.GetFullPath(@"C:\Voronoi Project\Voronoi Project");
-            DBfilePath = fileFolder + "\\" + FileDBName;
+            //string FileDBName = "myVoron.jpg";
+            //string fileFolder = Path.GetFullPath(@"C:\Voronoi Project\Voronoi Project");
+            //DBfilePath = fileFolder + "\\" + FileDBName;
 
 
-            if (File.Exists(DBfilePath) == false)
-            {
-                var file = File.Create(DBfilePath);
-                file.Close();
-            }
+            //if (File.Exists(DBfilePath) == false)
+            //{
+            //    var file = File.Create(DBfilePath);
+            //    file.Close();
+            //}
 
 
             RunProcess runProcess = new RunProcess();
