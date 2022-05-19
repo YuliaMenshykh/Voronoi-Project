@@ -41,6 +41,7 @@ namespace Voronoi_Project
 
             RunProcess runProcess = new RunProcess();
             runProcess.RunProcessing();
+            runProcess.Saver();
 
         }    
     }
