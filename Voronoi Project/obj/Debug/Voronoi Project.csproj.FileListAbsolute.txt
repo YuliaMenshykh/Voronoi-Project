@@ -5,3 +5,17 @@ C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.csproj.AssemblyRefe
 C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.csproj.CoreCompileInputs.cache
 C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.exe
 C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.pdb
+C:\Voronoi Project\Voronoi Project\bin\Debug\Accord.dll.config
+C:\Voronoi Project\Voronoi Project\bin\Debug\Accord.dll
+C:\Voronoi Project\Voronoi Project\bin\Debug\NetTopologySuite.dll
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Buffers.dll
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Memory.dll
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Numerics.Vectors.dll
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Voronoi Project\Voronoi Project\bin\Debug\Accord.xml
+C:\Voronoi Project\Voronoi Project\bin\Debug\NetTopologySuite.xml
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Buffers.xml
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Memory.xml
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Numerics.Vectors.xml
+C:\Voronoi Project\Voronoi Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Voronoi Project\Voronoi Project\obj\Debug\Voronoi Project.csproj.CopyComplete

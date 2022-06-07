@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -16,8 +13,8 @@ namespace Voronoi_Project
         static Random random = new Random();
 
 
-        private static int _imageSizeX =300;
-        private static int _imageSizeY = 300;
+        private static int _imageSizeX = 1200;
+        private static int _imageSizeY = 1200;
         static int RandCountOFPoint = random.Next(60, 80);
 
         static RandPoints randPoint = new RandPoints(_imageSizeX, _imageSizeY, RandCountOFPoint);
@@ -26,18 +23,18 @@ namespace Voronoi_Project
         protected Color[] GetColor = randPoint.GetRandomColor();
 
         int moveCount = 20;
-        int border = 8;
+        static int border = 9;
+        
 
         Bitmap bitmap = new Bitmap(_imageSizeX, _imageSizeY);
         System.Windows.Point MidPoint = new System.Windows.Point(_imageSizeX / 2, _imageSizeY / 2);
-        
 
+       
         public void RunProcessing()
         {
             Vector[] vector = new Vector[GetPoints.Length];
             System.Windows.Point[] pointsResult = new System.Windows.Point[GetPoints.Length];
-            double[] allDistanse = new double[GetPoints.Length];
-           
+            double [] allDistanse = new double[GetPoints.Length];
 
             for (int g = 0; g < moveCount; g++)
             {
@@ -54,32 +51,24 @@ namespace Voronoi_Project
                     {
                         for (int i = 0; i < GetPoints.Length; i++)
                         {
-                            allDistanse[i] = Math.Sqrt(Math.Pow((x - GetPoints[i].X+vector[i].X), 2) + Math.Pow((y - GetPoints[i].Y + vector[i].Y), 2));
-
-                            pointsResult[i] = Vector.Add( vector[i] , GetPoints[i]);
-
+                            allDistanse[i] = Math.Pow((x - GetPoints[i].X+vector[i].X), 2) + Math.Pow((y - GetPoints[i].Y + vector[i].Y), 2);
                         }
-                        double[] copied = (double[])allDistanse.Clone();
-                        
-                        Array.Sort(copied);
 
                         double minVValue = allDistanse.Min();
-
                         int index = Array.IndexOf(allDistanse, minVValue);
+                        Array.Sort(allDistanse);
 
-                        if (copied[1] - copied[0] <= border)
+                        //generate border
+                        if (Math.Sqrt(allDistanse[1]) - Math.Sqrt(allDistanse[0]) <= border)
                         {
                             bitmap.SetPixel(x, y, Color.White);
                         }
-                        else
-                        {
-                            bitmap.SetPixel(x, y, GetColor[index]);
-                        }
+                        else bitmap.SetPixel(x, y, GetColor[index]);
+
                     }
                 
                 }
 
-                //bitmap.Save($"C:\\Voronoi Project\\Voronoi Project\\myVoronoi{g}.png", ImageFormat.Png);
                 bitmap.Save($"C:\\Voronoi Project\\Voronoi Project\\myVoronoi{g}.Gif", ImageFormat.Gif);
 
                
@@ -88,14 +77,17 @@ namespace Voronoi_Project
   
 
         }
+        
+        
         public void Saver()
         {
-            Bitmap[] gifImageArray = new Bitmap[moveCount];
 
+            Bitmap[] gifImageArray = new Bitmap[moveCount];
             for (int i = 0; i < moveCount; i++)
             {
                 gifImageArray[i] = (Bitmap)Image.FromFile($"C:\\Voronoi Project\\Voronoi Project\\myVoronoi{i}.gif");
             }
+           
 
             ImageCodecInfo gifEncroder = null;
             foreach (ImageCodecInfo item in ImageCodecInfo.GetImageEncoders())
@@ -103,7 +95,6 @@ namespace Voronoi_Project
                 if (item.MimeType == "image/gif")
                 {
                     gifEncroder = item;
-
                     break;
                 }
             }
@@ -111,7 +102,6 @@ namespace Voronoi_Project
             if (gifEncroder == null)
             {
                 Console.WriteLine("Gif encoder is null!");
-
                 return;
             }
 
@@ -127,7 +117,7 @@ namespace Voronoi_Project
 
                 var encoderParams1 = new EncoderParameters(1)
                 {
-                    Param = { [0] = new EncoderParameter(System.Drawing.Imaging.Encoder.SaveFlag, (long)EncoderValue.MultiFrame) }
+                    Param = { [0] = new EncoderParameter(Encoder.SaveFlag, (long)EncoderValue.MultiFrame) }
                 };
 
                 Bitmap animatedGif = gifImageArray[1];
@@ -143,7 +133,7 @@ namespace Voronoi_Project
 
                 var encoderParamsN = new EncoderParameters(1)
                 {
-                    Param = { [0] = new EncoderParameter(System.Drawing.Imaging.Encoder.SaveFlag, (long)EncoderValue.FrameDimensionTime) }
+                    Param = { [0] = new EncoderParameter(Encoder.SaveFlag, (long)EncoderValue.FrameDimensionTime) }
                 };
 
 
@@ -151,11 +141,15 @@ namespace Voronoi_Project
                 {
                     animatedGif.SaveAdd(gifImageArray[i], encoderParamsN);
                 }
+                for (int i = moveCount-1; i > 1; i--)
+                {
+                    animatedGif.SaveAdd(gifImageArray[i], encoderParamsN);
+                }
 
 
                 var encoderParamsFlush = new EncoderParameters(1)
                 {
-                    Param = { [0] = new EncoderParameter(System.Drawing.Imaging.Encoder.SaveFlag, (long)EncoderValue.Flush) }
+                    Param = { [0] = new EncoderParameter(Encoder.SaveFlag, (long)EncoderValue.Flush) }
                 };
 
                 animatedGif.SaveAdd(encoderParamsFlush);
